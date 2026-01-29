@@ -1,0 +1,66 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.mycompany</groupId>
+    <artifactId>demo_cicd_1256</artifactId>
+    <version>2.0.0</version>
+    <packaging>war</packaging>
+    <name>demo_cicd_1256</name>
+
+    <!-- ================= PROPERTIES ================= -->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- Java LTS recommandé -->
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+
+        <!-- Jakarta EE -->
+        <jakartaee>10.0.0</jakartaee>
+
+        <!-- Evite l’erreur web.xml -->
+        <failOnMissingWebXml>false</failOnMissingWebXml>
+    </properties>
+
+    <!-- ================= DEPENDENCIES ================= -->
+    <dependencies>
+        <dependency>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-api</artifactId>
+            <version>${jakartaee}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <!-- ================= BUILD ================= -->
+    <build>
+        <plugins>
+
+            <!-- Compiler Java -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <release>17</release>
+                </configuration>
+            </plugin>
+
+            <!-- WAR plugin (CRITIQUE) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.4.0</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>
